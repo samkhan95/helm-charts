@@ -3,7 +3,7 @@ pipeline{
     agent any
     stages{
         stage("Deploy the app to kubernetes cluster"){
-            steps{
+            sshagent(['k8s']) {
                 sh 'helm install aegis-front ./aegis-front'
                 sh 'helm install aegis-back ./aegis-back'
                 sh 'helm install db ./db'
