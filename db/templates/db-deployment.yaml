@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{.Release.Name}}
+spec:
+  replicas: {{.Values.replicaCount}}
+  selector:
+    matchLabels:
+      app: mongo-container
+  template:
+    metadata:
+      labels:
+        app: mongo-container
+    spec:
+      containers:
+      - name: mongo-container
+        image: {{.Values.image.repository}}
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "250m"
+        ports:
+        - containerPort: 27017

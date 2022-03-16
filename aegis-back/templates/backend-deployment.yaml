@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{.Release.Name}}
+spec:
+  replicas: {{.Values.replicaCount}}
+  selector:
+    matchLabels:
+      app: backend-device
+  template:
+    metadata:
+      labels:
+        app: backend-device
+    spec:
+      containers:
+      - name: backend-device
+        image:  {{.Values.image.repository}}
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "250m"
+        ports:
+        - containerPort: 8080

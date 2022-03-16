@@ -1,0 +1,7 @@
+replicaCount: 1
+
+image: 
+  repository: samad095/device-service
+  pullPolicy: IfNotPresent
+  tag: 0.1.0
+
