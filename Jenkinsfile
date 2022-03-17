@@ -2,7 +2,7 @@
 pipeline{
     agent any
     stages{
-        stage(setting up cluter){
+        stage("setting up cluter"){
             steps{
                 sh 'minikube delete'
                 sh 'minikube start --driver=docker --cpus=5'
