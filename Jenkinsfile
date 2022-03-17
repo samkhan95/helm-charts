@@ -5,6 +5,9 @@ pipeline{
         stage("setting up cluter"){
             steps{
                 sh 'minikube delete'
+                sh '''sudo groupadd docker
+                sudo usermod -aG docker $USER
+                newgrp docker'''
                 sh 'minikube start --driver=docker --cpus=5'
             }    
             
